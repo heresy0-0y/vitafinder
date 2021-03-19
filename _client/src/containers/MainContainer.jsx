@@ -6,7 +6,7 @@ import {
   postSupplement,
   putSupplement,
 } from "../services/supplements";
-import { addVitaminToSupplement } from "../services/vitaminsSupplements";
+import { addVitaminToSupplement, getAmountOfVitaPerServing } from "../services/vitaminsSupplements";
 import { getVitamins, postVitamin } from "../services/vitamins";
 import { getBrands } from "../services/brands";
 import Supplements from "../screens/Supplements";
@@ -21,6 +21,7 @@ export default function MainContainer(props) {
   const [supplements, setSupplements] = useState([]);
   const [vitamins, setVitamins] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [amountsPerServing, setAmountsPerServing] = useState([]);
   const history = useHistory();
   // const {currentUser} = props
 
@@ -48,6 +49,14 @@ export default function MainContainer(props) {
     fetchBrands();
   }, []);
 
+  useEffect(() => {
+    const fetchAmountsPerServing = async () => {
+      const amounts = await getAmountOfVitaPerServing();
+      setAmountsPerServing(amounts)
+    }
+    fetchAmountsPerServing()
+  }, [])
+
   const handleCreate = async (formData) => {
     const newSupplement = await postSupplement(formData);
     setSupplements((prevState) => [...prevState, newSupplement]);
@@ -71,11 +80,9 @@ export default function MainContainer(props) {
     history.push("/supplements");
   };
 
-  const addVitaServing = async (id, vitaminData) => {
-    const vitamin = await postVitamin(vitaminData)
-    await addVitaminToSupplement(id, vitamin.id);
-    setVitamins((prevState) => [...prevState, vitamin]);
-    history.push(`/supplement/${id}`);
+  const addVitaServing = async (vitaminData) => {
+    await addVitaminToSupplement(vitaminData);
+    history.push(`/supplement/${vitaminData.supplement_id}`);
   };
 
   return (
@@ -95,6 +102,7 @@ export default function MainContainer(props) {
           vitamins={vitamins}
           brands={brands}
           addVitaServing={addVitaServing}
+          amountsPerServing={amountsPerServing}
         />
       </Route>
       {/* change route back to /supplements when theres a home/landing page */}

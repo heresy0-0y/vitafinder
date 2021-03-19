@@ -4,25 +4,39 @@ import { getSupplement } from "../services/supplements";
 
 export default function SupplementDetail(props) {
   const [supplementItem, setSupplementItem] = useState(null);
-  const [vitamin, setVitamin] = useState({
-    name: "",
+  const [vitaminAmounts,setVitaminAmounts] = useState([])
+  const [vitaminAmount, setVitaminAmount] = useState({
+    vitamin_id: "",
     weight: "",
+    units: "",
+    supplement_id: "" 
   });
-  const { name, weight } = vitamin;
+  const { vitamin_id, weight, units, supplement_id } = vitaminAmount;
   const { id } = useParams();
-  const { vitamins, addVitaServing } = props;
+  const { vitamins, addVitaServing, amountsPerServing } = props;
 
   useEffect(() => {
     const fetchSupplementItem = async () => {
       const supplementData = await getSupplement(id);
       setSupplementItem(supplementData);
+      setVitaminAmount(prevstate => ({
+        ...prevstate,
+        supplement_id: id}))
     };
     fetchSupplementItem();
-  }, [id]);
+  }, [id, amountsPerServing]);
+
+  useEffect(()=> {
+    const supplementAmounts = amountsPerServing.filter((amounts) => {
+      return Number(amounts.supplement_id) === Number(id)
+    })
+    setVitaminAmounts(supplementAmounts)
+    console.log(supplementAmounts);
+  },[id, amountsPerServing])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setVitamin((prevState) => ({
+    setVitaminAmount((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -30,34 +44,41 @@ export default function SupplementDetail(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addVitaServing(id, vitamin);
+    addVitaServing(vitaminAmount);
   };
 
   return (
     <div>
       <h3>{supplementItem?.name}</h3>
       <h2>{supplementItem?.price}</h2>
-      {supplementItem?.vitamins.map((vitamin) => (
-        <p key={vitamin.id}>{vitamin.name}</p>
-      ))}
+      {vitaminAmounts.map(amount =>
+        (
+          <h5>{vitamins.find((vitamin)=> (vitamin.id===(amount.vitamin_id))).name} {amount.weight} {amount.units}</h5>
+        ))}
       <form onSubmit={handleSubmit}>
+        <label htmlFor="vitamin"></label>
         <select
           defaultValue="default"
-          name="name"
-          value={name}
+          name="vitamin_id"
+          value={vitamin_id}
           onChange={handleChange}
         >
-          <option value="default" dsabled>
+          <option value="default">
             --Select a Vitamin--
           </option>
           {vitamins.map((vitamin) => (
-            <option value={vitamin.name} key={vitamin.id}>
+            <option value={vitamin.id} key={vitamin.id}>
               {vitamin.name}
             </option>
           ))}
         </select>
         <label htmlFor="amount per serving, milligrams">
-          Amount per serving (in milligrams):
+          Amount per serving (in 
+          <select defaultValue="default" name="units" value={units} onChange={handleChange}>
+            <option value="default">-units-</option>
+            <option value="milligrams">milligrams</option>
+            <option value="micrograms">micrograms</option>
+          </select>):
           <input
             onChange={handleChange}
             type="number"
