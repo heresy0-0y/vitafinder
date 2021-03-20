@@ -1,21 +1,19 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import MyButton from "../components/MyButton";
-import { Wrapper, VitaLink, Navbar} from "../components";
+
+import {Navbar} from "../components";
 
 export default function Layout(props) {
   const { currentUser, handleLogout } = props;
 
   return (
-    <div>
-      <Navbar/>
-      <Wrapper>
-
-      
-        <div className="App">
-          <header>
-           {/* users and auth */}
-          {/* {currentUser ? (
+    <Wrapper>
+      <div className="App">
+        <header>
+          <VitaLink to="/">
+            <h1>VITAFINDA</h1>
+          </VitaLink>
+          {currentUser ? (
             <>
               <p>{currentUser.username}</p>
               <MyButton onClick={handleLogout}>Logout</MyButton>
@@ -31,11 +29,10 @@ export default function Layout(props) {
               <VitaLink to="/brands">Brands</VitaLink>
               <hr />
             </>
-          )} */}
+          )}
         </header>
         {props.children}
       </div>
     </Wrapper>
-    </div>
   );
 }

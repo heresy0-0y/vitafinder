@@ -23,7 +23,7 @@ function Navbar() {
   const closeMobileMenu = () => setClick(false);
 
   const showButton = () => {
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 769) {
       setButton(false);
     } else {
       setButton(true);
@@ -38,12 +38,12 @@ function Navbar() {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "seagreen" }}>
+      <IconContext.Provider value={{ color: "#ffefd5" }}>
         <Nav>
           <NavbarContainer>
             <NavLogo to="/" onClick={closeMobileMenu}>
               <NavIcon />
-              ULTRA
+              VITAFINDR
             </NavLogo>
             <MobileIcon onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
@@ -51,20 +51,21 @@ function Navbar() {
             <NavMenu onClick={handleClick} click={click}>
               <NavItem>
                 <NavLinks to="/" onClick={closeMobileMenu}>
-                  Home
+                  Supplements
                 </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="/services" onClick={closeMobileMenu}>
-                  Services
+                <NavLinks to="/vitamins" onClick={closeMobileMenu}>
+                Vitamins
                 </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="/products" onClick={closeMobileMenu}>
-                  Products
+                <NavLinks to="/brands" onClick={closeMobileMenu}>
+                  Brands
                 </NavLinks>
               </NavItem>
-              <NavItemBtn>
+              {/* for after users /auth built on backend */}
+              {/* <NavItemBtn>
                 {button ? (
                   <NavBtnLink to="/sign-up">
                     <Button primary>SIGN UP</Button>
@@ -76,7 +77,7 @@ function Navbar() {
                     </Button>
                   </NavBtnLink>
                 )}
-              </NavItemBtn>
+              </NavItemBtn> */}
             </NavMenu>
           </NavbarContainer>
         </Nav>

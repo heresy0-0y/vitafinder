@@ -3,8 +3,10 @@ import { Container } from "../../globalStyles";
 
 export const Wrap = styled.div`
   padding: 0.3em;
-  background: papayawhip;
+  color: papayawhip;
   height: 100vh;
+  width: 100vw;
+  background-color: #00642d;
   display: flex;
   flex-direction: column;
   align-content: center;
