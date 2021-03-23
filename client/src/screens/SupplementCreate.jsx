@@ -10,6 +10,7 @@ export default function SuplementCreate(props) {
     retail_url: "",
     brand_id: "",
   });
+  const [required, setRequired] = useState(false)
   const {
     name,
     image_url,
@@ -26,6 +27,9 @@ export default function SuplementCreate(props) {
       ...prevState,
       [name]: value,
     }));
+    if (formData.brand_id) {
+      setRequired(prevState => prevState = true)
+    }
   };
 
   return (
@@ -49,7 +53,7 @@ export default function SuplementCreate(props) {
           name="brand_id"
           onChange={handleChange}
         >
-          <option value="default" disabled="true">
+          <option value="default" disabled={required} >
             --Select a Brand--
           </option>
           {brands.map((brand) => (

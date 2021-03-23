@@ -76,7 +76,7 @@ export const NavItem = styled.li`
   border-bottom: 2px solid transparent;
 
   &:hover {
-    border-bottom: 2px solid #4b59f7;
+    border-bottom: 2px solid #ffe8c4;
   }
 
   @media screen and (max-width: 769px) {
@@ -99,7 +99,7 @@ export const NavItemBtn = styled.li`
 `;
 
 export const NavLinks = styled(Link)`
-  color: #fff;
+  color: #ffefd5;
   display: flex;
   align-items: center;
   text-decoration: none;
