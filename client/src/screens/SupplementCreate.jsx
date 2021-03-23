@@ -1,11 +1,14 @@
 import { useState } from "react";
 import MyButton from "../components/MyButton";
+import Select from "../components/Select"
+import StyledInput from '../components/StyledInput'
+import {StyledLabel} from '../components'
 
 export default function SuplementCreate(props) {
   const [formData, setFormData] = useState({
     name: "",
     image_url: "",
-    nutrition_label_url: "",
+    nutrition_StyledLabel_url: "",
     price: "",
     retail_url: "",
     brand_id: "",
@@ -14,7 +17,7 @@ export default function SuplementCreate(props) {
   const {
     name,
     image_url,
-    nutrition_label_url,
+    nutrition_StyledLabel_url,
     price,
     retail_url,
     brand_id,
@@ -40,14 +43,15 @@ export default function SuplementCreate(props) {
       }}
     >
       <h3>Create Supplement</h3>
-      <label>
+      <StyledLabel htmlFor="supplement name">
         Name:
-        <input type="text" name="name" value={name} onChange={handleChange} />
-      </label>
+        </StyledLabel>
+        <StyledInput type="text" name="name" value={name} onChange={handleChange} />
+      
       <br />
-      <label>
+      <StyledLabel>
         Brand:
-        <select
+        <Select
           defaultValue="default"
           value={brand_id}
           name="brand_id"
@@ -61,48 +65,48 @@ export default function SuplementCreate(props) {
               {brand.name}
             </option>
           ))}
-        </select>
-      </label>
+        </Select>
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Price:
-        <input
+        <StyledInput
           type="number"
           name="price"
           value={price}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Image URL:
-        <input
+        <StyledInput
           type="text"
           name="image_url"
           value={image_url}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <label>
-        Nutrition Label URL:
-        <input
+      <StyledLabel>
+        Nutrition StyledLabel URL:
+        <StyledInput
           type="text"
-          name="nutrition_label_url"
-          value={nutrition_label_url}
+          name="nutrition_StyledLabel_url"
+          value={nutrition_StyledLabel_url}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Retail URL:
-        <input
+        <StyledInput
           type="text"
           name="retail_url"
           value={retail_url}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
       <MyButton>Submit</MyButton>
     </form>

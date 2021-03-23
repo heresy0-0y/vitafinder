@@ -27,6 +27,7 @@ export const NavLogo = styled(Link)`
   color: seagreen;
   justify-self: flex-start;
   cursor: pointer;
+  font-family: Montserrat;
   text-decoration: none;
   font-size: 2rem;
   display: flex;
@@ -101,6 +102,7 @@ export const NavItemBtn = styled.li`
 export const NavLinks = styled(Link)`
   color: #ffefd5;
   display: flex;
+  font-family: 'Chango', cursive;
   align-items: center;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -113,7 +115,7 @@ export const NavLinks = styled(Link)`
     display: table;
 
     &:hover {
-      color: #4b59f7;
+      color: #CBFEBD;
       transition: all 0.3s ease;
     }
   }
