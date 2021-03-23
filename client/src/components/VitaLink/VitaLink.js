@@ -6,7 +6,7 @@ const VitaLink = (props) => {
   return (
     <>
       <LinkContainer>
-        <StyledLink>
+        <StyledLink to={props.to}>
           {props.children}
         </StyledLink>
       </LinkContainer>
