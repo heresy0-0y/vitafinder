@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import MyButton from "../components/MyButton";
+import Select from "../components/Select"
+import StyledInput from '../components/StyledInput'
+import {StyledLabel} from '../components'
 
 export default function SuplementEdit(props) {
   const [formData, setFormData] = useState({
@@ -55,52 +59,52 @@ export default function SuplementEdit(props) {
       }}
     >
       <h3>Edit Supplement</h3>
-      <label>
+      <StyledLabel>
         Name:
-        <input type="text" name="name" value={name} onChange={handleChange} />
-      </label>
+        <StyledInput type="text" name="name" value={name} onChange={handleChange} />
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Price:
-        <input
+        <StyledInput
           type="number"
           name="price"
           value={price}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Image URL:
-        <input
+        <StyledInput
           type="text"
           name="image_url"
           value={image_url}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Nutrition Label URL:
-        <input
+        <StyledInput
           type="text"
           name="nutrition_label_url"
           value={nutrition_label_url}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <label>
+      <StyledLabel>
         Retail URL:
-        <input
+        <StyledInput
           type="text"
           name="retail_url"
           value={retail_url}
           onChange={handleChange}
         />
-      </label>
+      </StyledLabel>
       <br />
-      <button>Submit</button>
+      <MyButton>Submit</MyButton>
     </form>
   );
 }

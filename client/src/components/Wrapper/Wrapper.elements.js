@@ -7,6 +7,7 @@ export const Wrap = styled.div`
   display: flex;
   height: 100vh;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 export const WrapContainer = styled(Container)`

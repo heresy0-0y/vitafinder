@@ -4,7 +4,6 @@ export default styled.button`
   padding: 0.5em;
   background: #244432;
   color: #FFE7C4;
-  display:flex;
   align-self: center;
   border-radius: .5rem;
   margin: 1rem;
@@ -15,6 +14,4 @@ export default styled.button`
     border-color: #ffeed4;
     transition: all .4s ease-in-out; 
   }
-  flex-direction: row;
-  justify-self: center;
 `;
