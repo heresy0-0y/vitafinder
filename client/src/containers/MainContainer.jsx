@@ -68,7 +68,7 @@ export default function MainContainer(props) {
     setSupplements((prevState) =>
       prevState.filter((supplement) => supplement.id !== id)
     );
-    history.push(`/supplement/${id}`)
+    history.push(`/supplements`)
   };
 
   const handleUpdate = async (id, formData) => {

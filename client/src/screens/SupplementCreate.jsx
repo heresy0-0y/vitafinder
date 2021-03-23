@@ -8,7 +8,7 @@ export default function SuplementCreate(props) {
   const [formData, setFormData] = useState({
     name: "",
     image_url: "",
-    nutrition_StyledLabel_url: "",
+    nutrition_url: "",
     price: "",
     retail_url: "",
     brand_id: "",
@@ -17,7 +17,7 @@ export default function SuplementCreate(props) {
   const {
     name,
     image_url,
-    nutrition_StyledLabel_url,
+    nutrition_url,
     price,
     retail_url,
     brand_id,
@@ -92,8 +92,8 @@ export default function SuplementCreate(props) {
         Nutrition StyledLabel URL:
         <StyledInput
           type="text"
-          name="nutrition_StyledLabel_url"
-          value={nutrition_StyledLabel_url}
+          name="nutrition_url"
+          value={nutrition_url}
           onChange={handleChange}
         />
       </StyledLabel>
