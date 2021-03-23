@@ -14,5 +14,6 @@ export const StyledLink = styled(Link)`
 `;
 
 export const LinkContainer = styled(Container)`
-    
+    display: flex;
+    align-items: center;
 `
