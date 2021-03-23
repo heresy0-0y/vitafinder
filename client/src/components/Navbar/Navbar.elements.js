@@ -25,7 +25,6 @@ export const NavbarContainer = styled(Container)`
 
 export const NavLogo = styled(Link)`
   color: seagreen;
-  justify-self: flex-start;
   cursor: pointer;
   font-family: Montserrat;
   text-decoration: none;
