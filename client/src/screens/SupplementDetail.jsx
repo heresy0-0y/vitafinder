@@ -36,7 +36,6 @@ export default function SupplementDetail(props) {
       return Number(supplement_id) === Number(id)
     })
     setVitaminAmounts(supplementAmounts)
-    console.log(supplementAmounts);
   },[supplement_id, id, amountsPerServing])
 
   const handleChange = (e) => {
