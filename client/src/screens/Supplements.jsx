@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {VitaLink} from '../components/'
 import MyButton from "../components/MyButton";
 
 export default function Supplements(props) {
@@ -10,14 +11,14 @@ export default function Supplements(props) {
       <h3>Supplements</h3>
       {supplements.map((supplement) => (
         <React.Fragment key={supplement.id}>
-          <Link to={`/supplement/${supplement.id}`}>
+          <VitaLink to={`/supplement/${supplement.id}`}>
             <p>{supplement.name}</p>
-          </Link>
+          </VitaLink>
           {
             <>
-              <Link to={`/supplement/${supplement.id}/edit`}>
+              <VitaLink to={`/supplement/${supplement.id}/edit`}>
                 <MyButton>edit</MyButton>
-              </Link>
+              </VitaLink>
               <MyButton onClick={() => handleDelete(supplement.id)}>
                 delete
               </MyButton>
@@ -26,9 +27,9 @@ export default function Supplements(props) {
         </React.Fragment>
       ))}
       <br />
-      <Link to="/supplement/new">
+      <VitaLink to="/supplement/new">
         <MyButton>Create</MyButton>
-      </Link>
+      </VitaLink>
     </div>
   );
 }
