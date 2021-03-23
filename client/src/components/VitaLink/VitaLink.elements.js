@@ -5,7 +5,7 @@ import {Container} from "../../globalStyles"
 export const StyledLink = styled(Link)`
     padding: .3em .7em;
     text-shadow: .2px .2px .3px;
-    color: seagreen;
+    color: #ffe8c4;
     text-decoration: none;
     :hover {
         color: cadetblue;
