@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Rows} from '../components'
 import {VitaLink} from '../components/'
 import MyButton from "../components/MyButton";
 
@@ -11,7 +11,7 @@ export default function Supplements(props) {
       <h3>Supplements</h3>
       {supplements.map((supplement) => (
         <React.Fragment key={supplement.id}>
-          <VitaLink to={`/supplement/${supplement.id}`}>
+          <Rows><VitaLink to={`/supplement/${supplement.id}`}>
             <p>{supplement.name}</p>
           </VitaLink>
           {
@@ -24,6 +24,7 @@ export default function Supplements(props) {
               </MyButton>
             </>
           }
+          </Rows>
         </React.Fragment>
       ))}
       <br />

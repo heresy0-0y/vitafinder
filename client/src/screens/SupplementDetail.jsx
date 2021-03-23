@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getSupplement } from "../services/supplements";
+import MyButton from "../components/MyButton";
+import Select from "../components/Select"
+import StyledInput from '../components/StyledInput'
+import {StyledLabel} from '../components'
+import {Rows} from '../components'
 
 export default function SupplementDetail(props) {
   const [supplementItem, setSupplementItem] = useState(null);
@@ -28,11 +33,11 @@ export default function SupplementDetail(props) {
 
   useEffect(()=> {
     const supplementAmounts = amountsPerServing.filter((amounts) => {
-      return Number(amounts.supplement_id) === Number(id)
+      return Number(supplement_id) === Number(id)
     })
     setVitaminAmounts(supplementAmounts)
     console.log(supplementAmounts);
-  },[id, amountsPerServing])
+  },[supplement_id, id, amountsPerServing])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,8 +61,8 @@ export default function SupplementDetail(props) {
           <h5>{vitamins.find((vitamin)=> (vitamin.id===(amount.vitamin_id))).name} {amount.weight} {amount.units}</h5>
         ))}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="vitamin"></label>
-        <select
+        <Rows><StyledLabel htmlFor="vitamin"></StyledLabel>
+        <Select
           defaultValue="default"
           name="vitamin_id"
           value={vitamin_id}
@@ -71,22 +76,24 @@ export default function SupplementDetail(props) {
               {vitamin.name}
             </option>
           ))}
-        </select>
-        <label htmlFor="amount per serving, milligrams">
+        </Select>
+        
+        <StyledLabel htmlFor="amount per serving, milligrams">
           Amount per serving (in 
-          <select defaultValue="default" name="units" value={units} onChange={handleChange}>
+          <Select defaultValue="default" name="units" value={units} onChange={handleChange}>
             <option value="default">-units-</option>
             <option value="milligrams">milligrams</option>
             <option value="micrograms">micrograms</option>
-          </select>):
-          <input
+          </Select>):
+          <StyledInput
             onChange={handleChange}
             type="number"
             name="weight"
             value={weight}
           />
-        </label>
-        <button>add</button>
+        </StyledLabel>
+        <MyButton>add</MyButton>
+        </Rows>
       </form>
     </div>
   );
